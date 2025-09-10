@@ -11,18 +11,20 @@
   "navigation": {
     "tabs": [
       {
+        "tab": "Guides",
         "groups": [
           {
+            "group": "Get Started",
             "pages": [
-              "Overview",
-              "Getting Started",
-              "How It Works",
-              "Core Contracts",
-              "Contract Addresses",
-              "Security",
-              "Fees",
-              "FAQs",
-              "Glossary"
+              "overview",
+              "getting-started",
+              "how-it-works",
+              "core-contracts",
+              "contract-addresses",
+              "security",
+              "fees",
+              "faqs",
+              "glossary"
             ]
           }
         ]
