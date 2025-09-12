@@ -28,7 +28,7 @@
           },
           {
             "group": "Dev Docs",
-            "pages": ["current-architecture", "contract-addresses"]
+            "pages": ["architecture", "contract-addresses"]
           }
         ]
       }
