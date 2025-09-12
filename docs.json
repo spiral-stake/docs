@@ -11,21 +11,24 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Docs",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "User Docs",
             "pages": [
               "overview",
               "getting-started",
               "how-it-works",
-              "current-architecture",
               "risks",
               "security",
               "fees",
               "faqs",
               "glossary"
             ]
+          },
+          {
+            "group": "Dev Docs",
+            "pages": ["current-architecture", "contract-addresses"]
           }
         ]
       }
