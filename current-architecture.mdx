@@ -1,0 +1,51 @@
+---
+title: "Current Architecture"
+description: "Description of your new file."
+---
+
+Spiral Stake operates through a modular architecture built on three core components that work together to deliver leveraged stablecoin yields. The **FlashLeverageCore** contract serves as the protocol's engine, managing individual user positions through isolated \*\*UserProxy \*\*contract while integrating with Morpho lending markets for optimal borrowing rates. The **FlashLeverage** wrapper contract provides the user-facing interface, handling token swaps via Pendle and managing the complete position lifecycle from creation to closure.
+
+**User Proxy Isolation** ensures each leveraged position operates independently through minimal proxy contracts cloned for gas efficiency. This architecture prevents cross-contamination between positions while maintaining capital efficiency. The **SwapAggregator** and **MarketPositionManager** modules handle automated token routing and position management across multiple Morpho pools, continuously optimizing for the best available rates.
+
+The protocol integrates with **Pendle's PT ecosystem** for fixed yield capture and **Morpho's lending infrastructure** for competitive borrowing rates. Built-in safety mechanisms including liquidation buffers, slippage protection, and LTV validation ensure positions remain secure throughout their lifecycle.
+
+## Core Contract Architecture
+
+Our current system consists of two primary smart contracts working in tandem:
+
+**FlashLeverageCore**
+
+The core engine that powers our leveraged yield strategies:
+
+- **Flash Loan Orchestration:** Executes complex multi-step leverage operations in a single transaction
+- **Dynamic Loan Calculation:** Automatically calculates optimal loan amounts based on collateral value and LTV ratios
+- **Risk Management:** Implements liquidation buffer (`i_liquidationBuffer`) and slippage protection (`i_slippageBuffer`) to protect positions
+- **Position State Management:** Tracks collateral amounts and borrowed shares for each user proxy through isolated `CoreLeveragePosition` structs
+- **Oracle Integration:** Uses Morpho's `IOracle` for real-time price feeds and accurate position valuation
+
+**Key Functions:**
+
+- `leverage()` - Creates/modifies leveraged positions via flashloan mechanics
+- `unleverage()` - Closes positions and returns profits to users
+- `calcLeverageFlashLoan()` - Determines optimal borrowing amounts based on desired LTV
+- `getMaxLtv()` - Returns safe LTV ratios with built-in liquidation protection
+
+**FlashLeverage (User Interface)**
+
+The user-facing contract that simplifies interaction and manages position registry:
+
+**Primary Role:** Acts as a comprehensive wrapper that handles token swaps, position tracking, and user experience optimization.
+
+**Advanced Features:**
+
+- **Automatic Token Swapping:** Integrates with Pendle router for seamless token-to-PT conversions
+- **Position Registry:** Maintains complete user position history with `LeveragePosition` structs
+- **Yield Fee Management:** Collects 10% performance fee on profits through treasury system
+- **Gas Efficiency:** Combines multiple operations into single transactions
+
+**Key Functions:**
+
+- `swapAndLeverage()` - One-click leveraging with automatic token conversion
+- `leverage()` - Direct leveraging with prepared collateral
+- `unleverage()` - Position closure with profit distribution
+- `getUserLeveragePositions()` - Complete position portfolio querying

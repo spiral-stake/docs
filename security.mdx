@@ -1,5 +1,42 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Security"
+description: "Description of your new file."
 ---
 
+Spiral Stake prioritizes security through comprehensive design practices and professional third-party validation to protect user funds and ensure protocol integrity.
+
+## Secure Architecture Design
+
+The protocol implements industry-leading security practices from the ground up:
+
+**Position Isolation:** Individual user proxy contracts prevent cross-contamination between positions, ensuring that issues with one position cannot affect others. This architecture limits blast radius and provides granular risk containment.
+
+**Multi-Layer Validation:** All critical operations undergo multiple validation checks including collateral token verification, LTV bounds checking, and slippage protection. The protocol validates inputs at both the user interface and core contract levels.
+
+**Reentrancy Protection:** Core functions implement OpenZeppelin's battle-tested reentrancy guards to prevent complex attack vectors during flash loan execution and position management.
+
+**Access Control:** Manager-based permissions system ensures only authorized addresses can execute leverage operations, while maintaining user control over their positions. The protocol implements Ownable2Step for secure ownership transfers.
+
+**Oracle Integration:** Direct integration with Morpho's established oracle infrastructure provides reliable price feeds without introducing additional oracle risk layers.
+
+## Professional Security Audit
+
+Spiral Stake has undergone comprehensive security review by **HashLock**, a leading blockchain security firm known for auditing high-value DeFi protocols. The audit process included:
+
+- Complete smart contract code review and vulnerability assessment
+- Gas optimization and efficiency analysis
+- Integration testing with external protocols (Morpho, Pendle)
+- Flash loan mechanism validation and attack vector analysis
+- Economic model review and edge case testing
+
+All identified issues have been addressed and the protocol has received security clearance for mainnet deployment.
+
+## Ongoing Security Measures
+
+**Immutable Core Logic:** Critical mathematical calculations and safety parameters are hardcoded as immutable variables, preventing unauthorized modifications that could compromise user safety.
+
+**Transparent Operations:** All position data and protocol parameters are publicly verifiable on-chain, enabling users and security researchers to monitor protocol health and detect anomalies.
+
+**Conservative Parameters:** Liquidation buffers and slippage protections on the side of caution, prioritizing capital preservation over maximum leverage extraction.
+
+While no smart contract system can guarantee complete immunity from all risks, Spiral Stake's security-first approach and professional validation provide strong foundations for safe protocol operation.

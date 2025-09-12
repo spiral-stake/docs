@@ -1,5 +1,31 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "FAQs"
+description: "Description of your new file."
 ---
 
+**How much can I leverage my position?** \
+Leverage levels depend on the specific PT market and its risk parameters. Most positions support 2-7x leverage, with the exact maximum determined by liquidation thresholds and safety buffers built into each market.
+
+**What happens if I get liquidated?** \
+Liquidation occurs on Morpho when your PT collateral value falls below the required loan-to-value threshold. Morpho's liquidators repay your outstanding debt and claim your PT collateral as compensation. This results in complete position closure on Spiral Stake, meaning you lose your entire leveraged position and receive no remaining collateral. The protocol's conservative LTV limits and liquidation buffers help reduce this risk, but users should monitor their positions closely to avoid liquidation scenarios that result in total position loss.
+
+**Can I close my position early?** \
+Yes, you can close positions anytime through the unleverage function. However, early closure may result in lower returns due to transaction costs, slippage, and missed yield optimization opportunities. Holding until PT maturity typically provides the best results as the yield is non-linear.
+
+**What are the fees?** \
+Spiral Stake charges a 10% performance fee on profits only. If your position closes at a loss or breaks even, no fees apply. There are no management fees, deposit fees, or withdrawal fees beyond standard gas costs.
+
+**Which tokens can I deposit?** \
+You can deposit supported Principal Tokens directly or USDC which gets automatically converted to the selected PT. Available PTs depend on current market integrations and include various staked stablecoin options.
+
+**How do I know if my position is safe?** \
+Check the current PT price and liquidation price when creating your position to understand your risk exposure from the start. Monitor your position's loan-to-value ratio through the portfolio section, which displays your current LTV, liquidation threshold, and safety buffer in real-time. The portfolio section also tracks PT price movements relative to your liquidation price, giving you early warning of potential risks. Stay well below the maximum LTV and watch for PT price declines that could push you toward liquidation territory.
+
+**What if Pendle or Morpho protocols face issues?** \
+The protocol isolates each user's position through individual proxy contracts, limiting exposure to other users. However, underlying protocol risks from Pendle or Morpho could affect all positions using those integrations.
+
+**How long should I hold my position?** \
+Positions held until PT maturity typically achieve optimal results since you capture the full fixed yield without early exit complications. Consider the PT's maturity date when opening positions to align with your investment timeline.
+
+**Is my money safe?** \
+Spiral Stake is non-custodial, meaning you maintain control of your funds through your wallet. The protocol has been audited by HashLock security firm, but like all DeFi protocols, it carries smart contract and market risks that users should understand before participating.

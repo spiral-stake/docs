@@ -1,0 +1,36 @@
+---
+title: "Risks Associated"
+description: "Description of your new file."
+---
+
+Leveraged yield strategies inherently amplify both potential returns and risks. Understanding these risk factors is essential for making informed investment decisions with Spiral Stake.
+
+## Liquidation Risk
+
+Your leveraged position faces liquidation if the value of your PT collateral falls below the required loan-to-value threshold. While the protocol implements conservative liquidation buffers and PT prices are generally stable relative to their underlying assets, rapid market movements or oracle price updates can trigger liquidations. Liquidated positions lose collateral to cover outstanding debt, potentially resulting in significant losses.
+
+**Protective measures:** The protocol maintains conservative LTV ratios with built-in safety buffers. Users can monitor their position health and reduce leverage before approaching dangerous thresholds.
+
+## Interest Rate Risk
+
+Your profitability depends on the spread between PT yields and borrowing costs from Morpho markets. If borrowing rates increase faster than your locked PT yields, your net returns diminish or turn negative. Rising interest rate environments can particularly impact longer-duration positions where rate changes have more time to compound.
+
+**Protective measures:** Users should monitor their positions closely and track borrowing rate changes relative to their locked PT yields. Consider adjusting leverage or closing positions if the interest rate spread becomes unfavorable to your return expectations.
+
+## Smart Contract Risk
+
+The protocol depends on multiple interconnected systems including Morpho lending markets, Pendle PT infrastructure, and oracle price feeds. Bugs, exploits, or failures in any component could affect position management, liquidations, or fund recovery. While contracts undergo thorough testing, smart contract interactions carry inherent technical risks.
+
+**Protective measures:** Spiral Stake implements position isolation through individual proxy contracts, limiting cross-user contamination. The protocol architecture includes multiple safety checks and has been designed with security-first principles and has been audited by hashlock.
+
+## Principal Token Risks
+
+PT tokens carry risks from their underlying collateral backing and yield generation sources. Stablecoin PTs face collateral mismanagement where backing assets may not be properly held or could be misused. The yield generation mechanisms themselves may face disruptions - such as changes to staking rewards, protocol fees, or underlying asset performance that reduce expected returns. PT liquidity can also vary, potentially affecting position unwinding during market stress.
+
+**Risk Management:** Research both the collateral backing and yield generation sources of chosen PT protocols. Evaluate the sustainability of underlying yield mechanisms and consider diversifying across PTs with different backing structures and yield sources.
+
+## Market and Liquidity Risk
+
+During periods of market stress, liquidity for PTs and associated swap mechanisms may decrease, making position adjustments or early exits more expensive or difficult to execute. Large positions relative to available liquidity may face slippage when unwinding.
+
+**Protective measures:** The protocol includes slippage protection mechanisms and integrates with Pendle's router. Users planning early exits should consider position sizes relative to market liquidity.
